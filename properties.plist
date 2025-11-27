@@ -19,5 +19,7 @@
 		<key>Spotify</key>
 		<false/>
 	</dict>
+	<key>sleepTimer</key>
+	<integer>0</integer>
 </dict>
 </plist>

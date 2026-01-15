@@ -80,13 +80,8 @@ on run
 		display dialog "❌ Setup failed (" & errNum & "): " & errMsg buttons {"OK"} default button "OK"
 	end try
 
-	-- Remove this Thread check code, once your stand alone App bundle is built and running.
 	set statusItemTitle to plistDict's objectForKey:"icon"
-	if my NSThread's isMainThread() as boolean then
-		my createStatusItem:statusItemTitle
-	else
-		my performSelectorOnMainThread:"createStatusItem:" withObject:statusItemTitle waitUntilDone:true
-	end if
+	my createStatusItem:statusItemTitle
 
 	if (do shell script "system_profiler SPHardwareDataType | awk -F': ' '/Model Name/ {print $2}'") does not contain "MacBook" then
 		display alert "LidMusic only works on MacBooks :("
